@@ -1,11 +1,10 @@
 import React from 'react';
+
+import Form from 'app/components/Form/Form';
 import './App.scss';
 
 const App = () => (
-    <div>
-        App
-        <img src="../smile.jpg" alt="" />
-    </div>
+    <Form />
 );
 
 export default App;
