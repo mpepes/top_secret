@@ -1,0 +1,9 @@
+.input-container {
+  position: relative;
+  display: inline-block;
+
+  .clear-query--button {
+    position: absolute;
+    right: 0;
+  }
+}
