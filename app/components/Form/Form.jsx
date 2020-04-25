@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Input from 'app/components/Input/Input';
 import Button from 'app/components/Button/Button';
-import { fetchData } from 'app/api/BaseAPI';
+import DataActions from 'app/modules/Data/actions';
 
 import './Form.scss';
 
@@ -41,9 +43,7 @@ class Form extends Component {
     }
 
     handleSubmit() {
-        fetchData(this.state.query)
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
+        this.props.fetchData(this.state.query);
     }
 
     render() {
@@ -79,4 +79,12 @@ class Form extends Component {
     }
 }
 
-export default Form;
+Form.propTypes = {
+    fetchData: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+    fetchData: DataActions.fetchData,
+};
+
+export default connect(null, mapDispatchToProps)(Form);
