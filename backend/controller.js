@@ -28,8 +28,19 @@ Promise.all(requests).then(responses => {
     const response = {
         searchQuery: searchQuery,
         data: {
-            giphyData: responses[0].data,
-            pixabayData: responses[1].hits,
+            giphy: {
+                items: responses[0].data,
+                pagination: {
+                    total: responses[0].pagination.total_count,
+                    offset: responses[0].pagination.offset,
+                    },
+                },
+            pixabay: {
+                items: responses[1].hits,
+                pagination: {
+                    total: responses[1].totalHits,
+                    },
+                }
         }
     }
 

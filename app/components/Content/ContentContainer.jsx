@@ -7,6 +7,7 @@ import {
     getSearchQuery,
 } from 'app/modules/Data/selectors';
 import ContentSection from 'app/components/Content/components/ContentSection';
+import DataProvider from 'app/constants/DataProvider';
 
 import './ContentContainer.scss';
 
@@ -14,21 +15,21 @@ const ContentContainer = ({
     data,
     searchQuery,
 }) => {
-    if (!data) return null;
+    if (!Object.keys(data).length) return null;
 
     const {
-        giphyData,
-        pixabayData,
+        giphy,
+        pixabay,
     } = data;
 
     const sections = [
         {
-            label: 'Giphy',
-            data: giphyData,
+            label: DataProvider.GIPHY,
+            data: giphy,
         },
         {
-            label: 'Pixabay',
-            data: pixabayData,
+            label: DataProvider.PIXABAY,
+            data: pixabay,
         },
     ];
 
@@ -56,6 +57,11 @@ ContentContainer.propTypes = {
     // when we have final structure we can go with PropTypes.shape here
     data: PropTypes.objectOf(PropTypes.any),
     searchQuery: PropTypes.string,
+};
+
+ContentContainer.defaultProps = {
+    data: {},
+    searchQuery: '',
 };
 
 const mapStateToProps = state => ({
