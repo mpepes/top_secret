@@ -6,9 +6,9 @@ import Input from 'app/components/Input/Input';
 import Button from 'app/components/Button/Button';
 import DataActions from 'app/modules/Data/actions';
 
-import './Form.scss';
+import './SearchInput.scss';
 
-class Form extends Component {
+class SearchInput extends Component {
     constructor(props) {
         super(props);
 
@@ -79,7 +79,7 @@ class Form extends Component {
     }
 }
 
-Form.propTypes = {
+SearchInput.propTypes = {
     fetchData: PropTypes.func.isRequired,
 };
 
@@ -87,4 +87,4 @@ const mapDispatchToProps = {
     fetchData: DataActions.fetchData,
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(null, mapDispatchToProps)(SearchInput);

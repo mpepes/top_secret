@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import Form from 'app/components/Form/Form';
+import SearchInput from 'app/components/SearchInput/SearchInput';
 import store from 'app/store/store';
 import ContentContainer from 'app/components/Content/ContentContainer';
 
@@ -9,7 +9,7 @@ import './App.scss';
 
 const App = () => (
     <Provider store={store}>
-        <Form />
+        <SearchInput />
         <ContentContainer />
     </Provider>
 );
