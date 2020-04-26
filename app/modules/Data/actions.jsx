@@ -7,10 +7,8 @@ import {
     getSearchQuery,
     getDataByType,
 } from 'app/modules/Data/selectors';
-import {
-    DataProvider,
-    PageSize,
-} from 'app/constants/DataProvider';
+import { DataProvider } from 'app/constants/DataProvider';
+import errorActionTypes from 'app/modules/Error/actionTypes';
 
 import actionTypes from './actionTypes';
 
@@ -23,6 +21,10 @@ const {
     IS_LOADING,
 } = loadingActionTypes;
 
+const {
+    IS_ERROR,
+} = errorActionTypes;
+
 const actions = {
     fetchData: query => dispatch => {
         dispatch({ type: IS_LOADING });
@@ -34,7 +36,9 @@ const actions = {
                 });
                 dispatch({ type: IS_LOADING });
             })
-            .catch(error => console.log(error));
+            .catch(() => {
+                dispatch({ type: IS_ERROR });
+            });
     },
 
     fetchAdditionalData: type => (dispatch, getState) => {
@@ -60,6 +64,9 @@ const actions = {
                     data,
                 });
                 dispatch({ type: IS_LOADING });
+            })
+            .catch(() => {
+                dispatch({ type: IS_ERROR });
             });
     },
 };
