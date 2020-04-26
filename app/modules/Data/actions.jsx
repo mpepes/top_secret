@@ -1,3 +1,5 @@
+import { batch } from 'react-redux';
+
 import {
     fetchData,
     fetchAdditionalData,
@@ -30,11 +32,13 @@ const actions = {
         dispatch({ type: IS_LOADING });
         fetchData(query)
             .then(data => {
-                dispatch({
-                    type: FETCH_DATA,
-                    data,
+                batch(() => {
+                    dispatch({
+                        type: FETCH_DATA,
+                        data,
+                    });
+                    dispatch({ type: IS_LOADING });
                 });
-                dispatch({ type: IS_LOADING });
             })
             .catch(() => {
                 dispatch({ type: IS_ERROR });
@@ -59,11 +63,13 @@ const actions = {
 
         fetchAdditionalData(query, extraParam)
             .then(data => {
-                dispatch({
-                    type: FETCH_ADDITIONAL_DATA,
-                    data,
+                batch(() => {
+                    dispatch({
+                        type: FETCH_ADDITIONAL_DATA,
+                        data,
+                    });
+                    dispatch({type: IS_LOADING});
                 });
-                dispatch({ type: IS_LOADING });
             })
             .catch(() => {
                 dispatch({ type: IS_ERROR });
