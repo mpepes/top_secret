@@ -1,9 +1,21 @@
-.input-container {
-  position: relative;
-  display: inline-block;
+@import 'app/scss/variables';
 
-  .clear-query--button {
-    position: absolute;
-    right: 0;
+.clear-query-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  border: none;
+  margin-right: 2px;
+  background: none;
+  font-weight: bold;
+
+  &:hover {
+    background: $darkSkyBlue;
+    border-radius: 50%;
   }
+}
+
+.search-btn {
+  padding: 5px;
 }

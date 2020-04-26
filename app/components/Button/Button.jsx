@@ -1,6 +1,8 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 
+import './Button.scss';
+
 const Button = ({
     onClick,
     children,

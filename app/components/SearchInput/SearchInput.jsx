@@ -62,7 +62,7 @@ class SearchInput extends Component {
                     {query && (
                         <Button
                             onClick={this.clearQuery}
-                            className="clear-query--button"
+                            className="clear-query-btn"
                         >
                             x
                         </Button>
@@ -71,6 +71,7 @@ class SearchInput extends Component {
                 <Button
                     onClick={this.handleSubmit}
                     disabled={query === ''}
+                    className="search-btn"
                 >
                     Search
                 </Button>

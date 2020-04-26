@@ -1,9 +1,23 @@
 @import 'app/scss/variables';
 
 .input-container {
+  position: relative;
+  display: inline-block;
   margin-left: $spacing-sm;
 
   .input {
-    padding-right: 25px;
+    padding: 5px 25px 5px 7px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #D4D4D4;
+
+    &:focus {
+      outline: none;
+      border-color: lightpink;
+    }
+  }
+
+  .search-btn {
+    border-radius: 14px;
   }
 }
