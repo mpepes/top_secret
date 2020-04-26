@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import DataProvider from 'app/constants/DataProvider';
+import { DataProvider } from 'app/constants/DataProvider';
 import GifRenderer from 'app/components/Content/components/GifRenderer';
 import ImageRenderer from 'app/components/Content/components/ImageRenderer';
+import Button from 'app/components/Button/Button';
+import DataActions from 'app/modules/Data/actions';
 
 const renderers = {
     [DataProvider.GIPHY]: GifRenderer,
@@ -13,6 +16,7 @@ const renderers = {
 const ContentSection = ({
     data,
     label,
+    fetchAdditionalData,
 }) => {
     const Renderer = renderers[label];
     const {
@@ -20,16 +24,28 @@ const ContentSection = ({
         items,
     } = data;
     const totalCount = pagination.total;
-    const displayInfo = `displaying ${items.length} of ${totalCount}`;
+    const itemsCount = items.length;
+    const displayInfo = `displaying ${itemsCount} of ${totalCount}`;
+    const onClick = () => fetchAdditionalData(label);
 
     return (
         <div className="content-section">
-            <div className="section-title">{`${label}: ${displayInfo}`}</div>
+            <div className="section-title">
+                <span>{`${label}: ${displayInfo}`}</span>
+                {label === DataProvider.PIXABAY && (
+                    <Button
+                        onClick={onClick}
+                        disabled={itemsCount >= totalCount}
+                    >
+                        Load more
+                    </Button>
+                )}
+            </div>
             <div className="items-container">
                 {items.map(item => (
                     <Renderer
                         key={item.id}
-                        {...item}
+                        { ...item }
                     />
                 ))}
             </div>
@@ -40,6 +56,11 @@ const ContentSection = ({
 ContentSection.propTypes = {
     label: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
+    fetchAdditionalData: PropTypes.func.isRequired,
 };
 
-export default ContentSection;
+const mapDispatchToProps = {
+    fetchAdditionalData: DataActions.fetchAdditionalData,
+};
+
+export default connect(null, mapDispatchToProps)(ContentSection);

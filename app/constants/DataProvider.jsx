@@ -1,6 +1,9 @@
-const DataProvider = {
+export const DataProvider = {
     GIPHY: 'giphy',
     PIXABAY: 'pixabay',
 };
 
-export default DataProvider;
+export const PageSize = {
+    [DataProvider.GIPHY]: 20,
+    [DataProvider.PIXABAY]: 25,
+};

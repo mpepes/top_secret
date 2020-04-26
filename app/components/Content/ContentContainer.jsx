@@ -7,7 +7,7 @@ import {
     getSearchQuery,
 } from 'app/modules/Data/selectors';
 import ContentSection from 'app/components/Content/components/ContentSection';
-import DataProvider from 'app/constants/DataProvider';
+import { DataProvider } from 'app/constants/DataProvider';
 import Loader from 'app/components/Loader/Loader';
 import { getIsLoadingStatus } from 'app/modules/Loading/selectors';
 

@@ -11,7 +11,11 @@ const fetchDataReducer = (state = {}, { type, data }) => {
             return data;
 
         case FETCH_ADDITIONAL_DATA:
-            return '';
+            const provider = data.provider;
+            const newState = { ...state };
+            newState.data[provider].items = newState.data[provider].items.concat(data.data);
+
+            return newState;
 
         default:
             return state;

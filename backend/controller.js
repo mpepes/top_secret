@@ -54,10 +54,14 @@ module.exports = {
         const apiUrl = offset ? giphyUrlWithParams : pixabayUrlWithParams;
 
         makeRequest(apiUrl).then(response => {
+            const data = {
+                provider: response.data ? 'giphy' : 'pixabay',
+                data: response.data || response.hits,
+            }
             res.statusCode = 200;
             res.setHeader('Content-Type', 'Application/json');
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.end(JSON.stringify(response.data || response.hits));
+            res.end(JSON.stringify(data));
         });
     },
 };
