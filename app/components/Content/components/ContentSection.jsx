@@ -20,12 +20,11 @@ const ContentSection = ({
         items,
     } = data;
     const totalCount = pagination.total;
-    const displayInfo = `Displaying: ${items.length} of ${totalCount}`;
+    const displayInfo = `displaying ${items.length} of ${totalCount}`;
 
     return (
         <div className="content-section">
-            <p>{label}</p>
-            <p>{displayInfo}</p>
+            <div className="section-title">{`${label}: ${displayInfo}`}</div>
             <div className="items-container">
                 {items.map(item => (
                     <Renderer

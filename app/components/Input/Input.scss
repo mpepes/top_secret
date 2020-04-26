@@ -1,3 +1,9 @@
-.input {
-  padding-right: 25px;
+@import 'app/scss/variables';
+
+.input-container {
+  margin-left: $spacing-sm;
+
+  .input {
+    padding-right: 25px;
+  }
 }

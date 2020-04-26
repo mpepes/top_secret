@@ -7,7 +7,7 @@ const GifRenderer = props => {
     } = props;
 
     return (
-        <video alt={title} src={images.fixed_height.mp4} autoPlay loop />
+        <video className="item item-gif" alt={title} src={images.fixed_height.mp4} autoPlay loop />
     );
 };
 

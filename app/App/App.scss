@@ -1,9 +1,8 @@
-$someColor: #d4d4d4;
+@import 'app/scss/variables';
 
 body {
-  background: $someColor;
-
-  div {
-    color: #000;
-  }
+  max-width: 1200px;
+  background: $mainBackgroundColor;
+  margin: auto;
+  padding-top: 15px;
 }

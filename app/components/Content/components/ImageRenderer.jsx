@@ -7,7 +7,7 @@ const ImageRenderer = props => {
     } = props;
 
     return (
-        <img src={previewURL} alt={tags} />
+        <img className="item item-image" src={previewURL} alt={tags} />
     );
 };
 

@@ -50,7 +50,7 @@ const ContentContainer = ({
 
     return (
         <>
-            <h3>{`Results for query: ${searchQuery}`}</h3>
+            <h3 className="results-info">{`Results for query: ${searchQuery}`}</h3>
             <div className="content-container">
                 {renderContent()}
             </div>

@@ -1,8 +1,37 @@
+@import 'app/scss/variables';
+
 .content-container {
   display: flex;
   justify-content: space-around;
 
   .content-section {
+    color: $mainTextColor;
     flex-direction: column;
+    flex: 1;
+    padding: 0 $spacing-sm;
+    box-shadow: 0 5px 10px 2px $blackTransparent;
+    overflow-y: scroll;
+    height: 85vh;
+    margin: 0 $spacing-sm;
+
+    .section-title {
+      background: $mainBackgroundColor;
+      display: block;
+      padding: $spacing-sm 0;
+      position: sticky;
+      top: 0;
+    }
+
+    .items-container {
+      .item {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
+}
+
+.results-info {
+  margin-left: $spacing-sm;
+  color: $mainTextColor;
 }
