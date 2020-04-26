@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { getErrorStatus } from 'app/modules/Error/selectors';
 
-const ErrorBoundry = ({
+const ErrorBoundary = ({
     isError,
     children,
 }) => {
@@ -15,7 +15,7 @@ const ErrorBoundry = ({
     return children;
 };
 
-ErrorBoundry.propTypes = {
+ErrorBoundary.propTypes = {
     isError: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
 };
@@ -24,4 +24,4 @@ const mapStateToProps = state => ({
     isError: getErrorStatus(state),
 });
 
-export default connect(mapStateToProps)(ErrorBoundry);
+export default connect(mapStateToProps)(ErrorBoundary);

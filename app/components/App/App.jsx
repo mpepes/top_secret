@@ -4,16 +4,16 @@ import { Provider } from 'react-redux';
 import SearchInput from 'app/components/SearchInput/SearchInput';
 import store from 'app/store/store';
 import ContentContainer from 'app/components/Content/ContentContainer';
-import ErrorBoundry from 'app/components/ErrorBoundry/ErrorBoundry';
+import ErrorBoundary from 'app/components/ErrorBoundary/ErrorBoundary';
 
 import './App.scss';
 
 const App = () => (
     <Provider store={store}>
-        <ErrorBoundry>
+        <ErrorBoundary>
             <SearchInput />
             <ContentContainer />
-        </ErrorBoundry>
+        </ErrorBoundary>
     </Provider>
 );
 
